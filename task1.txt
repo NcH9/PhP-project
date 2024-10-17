@@ -1,0 +1,80 @@
+1 Необхідно налаштувати локальне оточення
+
+    Локальне оточення налаштоване, використовуючи phpMyAdmin
+
+2 У phpMyAdmin (PMA) створити базу даних під назвою education.
+
+    CREATE DATABASE education;
+
+3 У цій базі даних створити таблиці:
+    - users: для зберігання користувачів (ПІБ, адреса (email?), дата народження, роль)
+
+        CREATE TABLE users (
+            id INT AUTOINCREMENT PRIMARY KEY,
+            fullname VARCHAR(50) NOT NULL,
+            email VARCHAR(100),
+            birthday DATE,
+            role VARCHAR(255) NOT NULL
+        );
+
+    - regions: для зберігання регіонів
+
+        CREATE TABLE regions (
+            id INT AUTOINCREMENT PRIMARY KEY,
+            region_name VARCHAR(50) NOT NULL
+        )4
+
+    - news: для зберігання новин (заголовок новини, текст новини, картинка, автор, дата публікації, активність новини).
+
+        CREATE TABLE news (
+            id INT AUTOINCREMENT PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            body TEXT NOT NULL,
+            img BLOB,
+            author_id INT NOT NULL,
+            publication_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+            actuality BOOLEAN NOT NULL,
+        )
+
+4 У таблицю users вставити записи.
+
+    INSERT INTO users (full_name, address, date_of_birth, role) VALUES
+    ('Anriy Andriychenko Andriyovich', 'andron@gmail.com '1990-01-01', 'admin'),
+    ('Vasyl Andriychenko Andriyovich', 'vasyan@gmail.com', '1985-05-15', 'редактор'),
+    ('Maria Andriychenko Andriyivna', 'mashunya@zrada.ru', '1992-08-20', 'user'),
+    ('Svitlana Andriychenko Andriyivna', 'svitlana@neperemozhni.ua', '1988-12-30', 'user');
+
+5 У таблицю regions вставити не менше 5 регіонів України
+
+    INSERT INTO regions (region_name) VALUES
+    ('Kyiv'),
+    ('Ivano-Frankivska oblast'),
+    ('Dnipropretrovska oblast'),
+    ('Kharkivska oblast'),
+    ('Cherkaska oblast');
+
+6 Зробити експорт усієї бази даних у форматі sql
+
+    Базу експортовано за допомогою інтерфейсу phpMyAdmin
+
+7 Зробити експорт таблиці users форматі CSV
+
+    Базу експортовано за допомогою інтерфейсу phpMyAdmin
+
+8 Очистити таблицю регіонів.
+
+    DELETE FROM regions;
+
+9 Знову зробити експорт усієї бази даних
+
+    Базу експортовано за допомогою інтерфейсу phpMyAdmin
+
+10 Видалити всі таблиці з бази даних education та імпортувати дамп з 6 завдання
+
+    DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS regions;
+    DROP TABLE IF EXISTS news;
+
+    Дамп з 6 завдання імпортовано за допомогою інтерфейсу phpMyAdmin
+
+
